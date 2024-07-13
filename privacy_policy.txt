@@ -1,0 +1,25 @@
+# Privacy Policy
+
+Your privacy is important to us. This privacy policy explains that our extension does not collect, use, store, or share any personal data from users.
+
+## Information Collection and Use
+Our extension does not collect any personal information or data from users. We do not track your browsing activity, collect your download history, or interact with any personal data stored on your device.
+
+## Permissions
+The permissions requested by our extension are solely used to provide the necessary functionality for the extension to work correctly:
+
+- **ActiveTab:** This permission is used to interact with the currently active tab to enable features such as modifying the page's content or retrieving specific data from it. No data is collected or stored.
+- **Downloads:** This permission is used to manage downloads initiated by the extension. No download data is collected or stored.
+- **Authorization for Hosts:** This permission is used to interact with specific external websites or APIs necessary for the extension's functionality. No data from these interactions is collected or stored.
+
+## Data Sharing
+Since we do not collect any personal data, there is no data to share with third parties.
+
+## Security
+We are committed to ensuring that your information is secure. Since our extension does not collect any data, there are no specific security measures required beyond those necessary to ensure the proper functioning of the extension itself.
+
+## Changes to This Policy
+We may update our privacy policy from time to time. Any changes will be posted on this page. We encourage you to review this privacy policy periodically for any updates.
+
+## Contact Us
+If you have any questions about this privacy policy, please contact us at [your contact information].
