@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Request Plugin</title>
+    <style>
+        :root {
+            --primary-color: #3A4256;
+            --secondary-color: #5C6A89;
+            --accent-color: #8C9EBF;
+            --background-color: #F0F2F5;
+            --text-color: #2C3E50;
+            --input-background: #FFFFFF;
+            --button-hover: #2C3E50;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 380px;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            background-color: var(--input-background);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        h1 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            background-color: var(--input-background);
+            color: var(--text-color);
+        }
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(58, 66, 86, 0.1);
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #response {
+            margin-top: 24px;
+            border: 1px solid var(--accent-color);
+            padding: 16px;
+            border-radius: 6px;
+            background-color: var(--input-background);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        #response pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }
+        #domainValidation {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        #googleSearchButton {
+            background-color: var(--accent-color);
+        }
+        #googleSearchButton:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Improved Tooltip styles */
+        button[title] {
+            position: relative;
+        }
+        button[title]::after {
+            content: attr(title);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 11px;
+            line-height: 1.2;
+            white-space: normal;
+            width: max-content;
+            max-width: 200px;
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        button[title]:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Custom Request Plugin</h1>
+        <div class="form-group">
+            <label for="url">Domain or IP (required)</label>
+            <input type="text" id="url" required placeholder="Enter domain or IP">
+            <div id="domainValidation"></div>
+        </div>
+        <div class="form-group">
+            <label for="path">Path (optional)</label>
+            <input type="text" id="path" placeholder="Enter path">
+        </div>
+        <div class="form-group">
+            <label for="payloads">Payloads (optional)</label>
+            <textarea id="payloads" rows="4" placeholder="Enter payloads, one per line"></textarea>
+        </div>
+        <button id="loadPayloads" title="Load multiple payloads to be tested against a domain one by one">Load Payloads</button>
+        <button id="crawl" title="Find dynamic fields on the given domain">Crawl Fields</button>
+        <button id="sendRequest" title="Send requests using the provided domain, path, and payloads">Send Requests</button>
+        <button id="lastResponseButton" title="Show the last response received">Last Response</button>
+        <button id="googleSearchButton" title="Search for subdomains of the given domain">Domain Search</button>
+        <div id="response"></div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
